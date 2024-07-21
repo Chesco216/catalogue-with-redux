@@ -1,0 +1,60 @@
+.container {
+  width: 100vw;
+  height: 100px;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.shopLogo {
+  width:80px;
+}
+
+.logoLabel {
+  margin-left: 10px;
+}
+
+.menu {
+  position: relative;
+  right: 0;
+  margin: auto;
+}
+
+.list {
+  /* display: none; */
+  position: absolute;
+  top: 100px;
+  right: 0px;
+  margin: auto;
+  padding-right: 100px;
+  background:black;
+  animation-name: slide-in;
+  animation-duration: 0.4s;
+}
+
+/*TODO: make the slide-out transition used*/
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(200px);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(-200px);
+  }
+}
+
+.item {
+  font-size: 20px;
+  margin: 20px 0px 20px 0px;
+}
