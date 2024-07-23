@@ -1,23 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = 
-[
-  {
-    id: '',
-    title: '',
-    price: 0,
-    category: '',
-    description: '',
-    imgUrl: ''
-  },
-]
+const initialState = []
 
 export const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    addProducts: (state, action) => state.push(action.payload)
+    addProducts: (state, action) => {
+      action.payload.map((product) => {
+        state.push(product)
+      })
+    },
+    clearProducts: (state) => initialState
   }
 })
 
-export const { addProducts } = productSlice.actions
+export const { addProducts, clearProducts } = productSlice.actions

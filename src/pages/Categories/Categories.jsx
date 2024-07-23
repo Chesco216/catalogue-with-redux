@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Header } from "../../components/Header/Header"
 import { getProducts } from '../../services/fetchProducts'
-import { addProducts } from '../../store/productSlice'
+import { addProducts, clearProducts } from '../../store/productSlice'
+import cat from './Categories.module.css'
+import { ProductCard } from './components/ProductCard/ProductCard'
 
 export const Categories = () => {
 
@@ -10,8 +12,8 @@ export const Categories = () => {
   const category = useSelector(state => state.category)
   const dispatch = useDispatch()
 
-  //FIX: error when i try to load fetch data to produscts state
   useEffect(() => {
+    dispatch(clearProducts())
     getProducts(category.cat)
       .then(data => {
         dispatch(addProducts(data))
@@ -24,6 +26,19 @@ export const Categories = () => {
     <>
       <Header/>
       <h1>{category.cat}</h1>
+      <div className={cat.products}>
+        {
+          products.map((item) => {
+              return <ProductCard
+                id={item.id}
+                title={item.title}
+                price={item.price}
+                description={item.description}
+                img={item.image}
+              />
+          })
+        }
+      </div>
     </>
   )
 }
